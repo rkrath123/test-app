@@ -51,7 +51,8 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}  # The server IP or hostname (GitHub Secret)
           username: ${{ secrets.SERVER_USER }}  # SSH username (GitHub Secret)
           key: ${{ secrets.SERVER_SSH_KEY }}  # Private SSH key (GitHub Secret)
-          port: ${{ secrets.SERVER_PORT }}  # SSH port (GitHub Secret)
+          #port: ${{ secrets.SERVER_PORT }}  # SSH port (GitHub Secret)
+          port: 22
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/sample-website:latest
             docker stop sample-website || true
