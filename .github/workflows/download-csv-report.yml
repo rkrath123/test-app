@@ -1,31 +1,51 @@
+
 name: Download NSE CSV Report
+
 on:
   schedule:
-    # Runs every day at midnight UTC
-    - cron: '0 0 * * *'
-  workflow_dispatch: # Allow manual trigger of the workflow
+    - cron: '0 0 * * *'  # Runs daily at midnight
 
 jobs:
-  download_report:
+  download:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      #- name: Checkout repository
-        #uses: actions/checkout@v2
+    - name: Download CSVThe job failed due to an error with the `curl` command while Report
+      run: |
+        URL="https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_01042025.csv"
+        RETRIES=5
+        for i in $( website. The error message `curl: (92) HTTPseq 1 $RETRIES); do
+          curl --http1.1 --retry 5 --retry-delay 10 -O $URL && break
+        done
 
-      # Step 2: Download the CSV file from the NSE India website
-      - name: Download CSV Report
-        run: |
-          curl -L -o sec_bhavdata_full_01042025.csv https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_01042025.csv
+# name: Download NSE CSV Report
+# on:
+#   schedule:
+#     # Runs every day at midnight UTC
+#     - cron: '0 0 * * *'
+#   workflow_dispatch: # Allow manual trigger of the workflow
+
+# jobs:
+#   download_report:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # Step 1: Checkout the repository
+#       #- name: Checkout repository
+#         #uses: actions/checkout@v2
+
+#       # Step 2: Download the CSV file from the NSE India website
+#       - name: Download CSV Report
+#         run: |
+#           curl -L -o sec_bhavdata_full_01042025.csv https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_01042025.csv
           
-      # Step 3: Commit the downloaded file to the GitHub repository
-      - name: Commit downloaded CSV file to GitHub
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add sec_bhavdata_full_01042025.csv
-          git commit -m "Add new CSV report"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       # Step 3: Commit the downloaded file to the GitHub repository
+#       - name: Commit downloaded CSV file to GitHub
+#         run: |
+#           git config --global user.name "github-actions[bot]"
+#           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#           git add sec_bhavdata_full_01042025.csv
+#           git commit -m "Add new CSV report"
+#           git push
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
