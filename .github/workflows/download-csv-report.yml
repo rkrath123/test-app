@@ -1,22 +1,22 @@
 
-name: Download NSE CSV Report
+# name: Download NSE CSV Report
 
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'  # Runs daily at midnight
 
-jobs:
-  download:
-    runs-on: ubuntu-latest
+# jobs:
+#   download:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Download CSVThe job failed due to an error with the `curl` command while Report
-      run: |
-        URL="https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_01042025.csv"
-        RETRIES=5
-        for i in $( website. The error message `curl: (92) HTTPseq 1 $RETRIES); do
-          curl --http1.1 --retry 5 --retry-delay 10 -O $URL && break
-        done
+#     steps:
+#     - name: Download CSVThe job failed due to an error with the `curl` command while Report
+#       run: |
+#         URL="https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_01042025.csv"
+#         RETRIES=5
+#         for i in $( website. The error message `curl: (92) HTTPseq 1 $RETRIES); do
+#           curl --http1.1 --retry 5 --retry-delay 10 -O $URL && break
+#         done
 
 # name: Download NSE CSV Report
 # on:
